@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <string>
+#include <vector>
+
 // include files
 #include "ethercat/master.h"
 
@@ -28,8 +30,9 @@ private:
 
     Ui::MainWindow *ui;
     string getEthercatChannel();
-    delta::asda::ethercat::Master ec_master();
+    delta::asda::ethercat::Master ec_master;
     bool try_connect_to_servo_device();
+    vector<string> slaves;
 
 };
 #endif // MAINWINDOW_H
