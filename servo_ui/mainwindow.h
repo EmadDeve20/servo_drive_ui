@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <string>
 #include <vector>
+#include <pthread.h>
 
 // include files
 #include "ethercat/master.h"
@@ -35,6 +36,11 @@ private:
     delta::asda::ethercat::Master ec_master;
     bool try_connect_to_servo_device();
     vector<string> slaves;
+
+    //thread variables
+    pthread_t pthread;
+    pthread_attr_t pthread_attr;
+    cpu_set_t cpu_set;
 
 };
 #endif // MAINWINDOW_H
