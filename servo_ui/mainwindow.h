@@ -6,9 +6,13 @@
 #include <vector>
 #include <pthread.h>
 #include <errno.h>
+#include <time.h>
+#include <unistd.h>
+
 
 // include files
 #include "ethercat/master.h"
+#include "ethercat/time.h"
 
 using namespace std;
 
