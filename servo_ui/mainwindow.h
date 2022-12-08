@@ -26,6 +26,8 @@ private slots:
     void on_connectChannelBtn_clicked();
 
 
+    void on_runTestBtn_clicked();
+
 private:
 
     Ui::MainWindow *ui;
