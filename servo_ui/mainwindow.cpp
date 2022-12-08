@@ -9,6 +9,10 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    //setup CPU variables
+    CPU_ZERO(&cpu_set);
+    CPU_SET(2, &cpu_set);
 }
 
 MainWindow::~MainWindow()
