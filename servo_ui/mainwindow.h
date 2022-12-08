@@ -32,9 +32,13 @@ private slots:
 private:
 
     Ui::MainWindow *ui;
-    string getEthercatChannel();
-    delta::asda::ethercat::Master ec_master;
+
+    //functions
     bool try_connect_to_servo_device();
+    string getEthercatChannel();
+
+    // variables
+    delta::asda::ethercat::Master ec_master;
     vector<string> slaves;
 
     //thread variables
