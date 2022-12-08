@@ -37,6 +37,7 @@ private:
     //functions
     bool try_connect_to_servo_device();
     string getEthercatChannel();
+    void* control_loop(void *arg); // this function is for running a test :)
 
     // variables
     delta::asda::ethercat::Master ec_master;
