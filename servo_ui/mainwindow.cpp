@@ -20,6 +20,43 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void* MainWindow::control_loop(void *arg)
+{
+    delta::asda::ethercat::Master* ec_master = (delta::asda::ethercat::Master*)arg;
+    struct timespec t, t_1, t0_cmd;
+
+    clock_gettime(CLOCK_MONOTONIC, &t);
+
+    for (int iter = 0; iter < 1800000l; iter++)
+    {
+        delta::asda::ethercat::add_timespec(&t, 2000000U + ec_master->t_off);
+
+        struct timespec t_left;
+        clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &t, &t_left);
+
+        struct timespec t_period;
+        delta::asda::ethercat::diff_timespec(t, t_1, &t_period);
+
+        if (iter >= 500)
+        {
+            struct timespec t_cmd;
+            delta::asda::ethercat::diff_timespec(t, t0_cmd, &t_cmd);
+
+            for (int i = 0; i < ec_slavecount; i++)
+            {
+                const uint16 slave_idx = 1 + i;
+                uint16 status_word = ec_master->tx_pdo[slave_idx].status_word;
+                int actual_position = ec_master->tx_pdo[slave_idx].actual_position;
+
+                int target_position = 0.5 * 10 * 100000 * (1 - std::cos(M_PI * delta::asda::ethercat::to_sec(t_cmd)));
+                ec_master->rx_pdo[slave_idx].interpolated_position_command = target_position;
+            }
+        }
+        ec_master->update();
+        t_1 = t;
+    }
+}
+
 
 
 void MainWindow::on_connectChannelBtn_clicked()
