@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <string>
+// include files
+#include "ethercat/master.h"
 
 using namespace std;
 
@@ -23,8 +25,11 @@ private slots:
 
 
 private:
+
     Ui::MainWindow *ui;
     string getEthercatChannel();
+    delta::asda::ethercat::Master ec_master();
+    bool try_connect_to_servo_device();
 
 };
 #endif // MAINWINDOW_H
