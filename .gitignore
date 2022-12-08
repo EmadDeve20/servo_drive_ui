@@ -1,5 +1,6 @@
 # vs code
 ./vscode/
+servo_ui/.vscode/
 
 # C++ objects and libs
 *.slo
