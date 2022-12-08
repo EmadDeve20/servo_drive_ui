@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <pthread.h>
+#include <errno.h>
 
 // include files
 #include "ethercat/master.h"
