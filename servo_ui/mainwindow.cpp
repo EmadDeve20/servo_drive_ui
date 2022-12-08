@@ -43,3 +43,9 @@ bool MainWindow::try_connect_to_servo_device()
 
     return true;
 }
+
+void MainWindow::on_runTestBtn_clicked()
+{
+    cout << "Clicked Run Test!" << endl;
+}
+
