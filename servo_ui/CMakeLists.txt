@@ -3,6 +3,10 @@ cmake_minimum_required(VERSION 3.5)
 project(servo_ui VERSION 0.1 LANGUAGES CXX)
 add_subdirectory(SOEM)
 
+include_directories(
+    include
+)
+
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 set(CMAKE_AUTOUIC ON)
@@ -52,7 +56,7 @@ else()
     qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
 endif()
 
-target_link_libraries(servo_ui PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(servo_ui PRIVATE Qt${QT_VERSION_MAJOR}::Widgets soem)
 
 set_target_properties(servo_ui PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
