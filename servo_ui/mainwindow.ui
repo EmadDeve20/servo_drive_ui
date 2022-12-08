@@ -61,6 +61,13 @@
      </widget>
     </item>
     <item>
+     <widget class="QPushButton" name="runTestBtn">
+      <property name="text">
+       <string>Run a Test</string>
+      </property>
+     </widget>
+    </item>
+    <item>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
        <widget class="QLabel" name="label_3">
